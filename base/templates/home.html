@@ -1,0 +1,85 @@
+{% extends "basic.html" %}
+
+{% block content %}
+    <div class="container" style="padding-top:5px;">
+        <div class="row">
+            <!-- RIGHT COLUMN -->
+            <div class="col s12 m6">
+                <div class="card blue-grey darken-1 hoverable">
+                    <div class="card-content white-text">
+                        <span class="card-title"><i class="small material-icons">perm_identity</i> Absences</span>
+                        {% if missing %}
+                            <ul>
+                                {% for missing in missing %}
+                                    <li>{{ missing.staff_name|upper }} <a><b>{{ missing.start|date:"d/M H:i" }} jusqu'au {{ missing.end|date:"d/M H:i" }}</b></a></li>
+                                {% endfor %}
+                            </ul>
+                            {% else %}
+                            <p> Personne est absents !</p>
+                        {% endif %}
+                    </div>
+                    <div class="card-action">
+                        <a href="{% url 'missing:missing' %}">Plus d'infos</a>
+                    </div>
+                </div>
+                <div class="card blue-grey darken-1 hoverable">
+                    <div class="card-content white-text">
+                        <span class="card-title"><i class="small material-icons">question_answer</i> Informations partagés</span>
+                    </div>
+                    <div class="card-action">
+                        <a href="{#{% url 'question:stack' %}#}">Plus</a>
+                    </div>
+                </div>
+                <div class="card blue-grey darken-1 hoverable">
+                    <div class="card-content white-text">
+                        <span class="card-title"><i class="small material-icons">today</i> Agenda</span>
+                    </div>
+                    <div class="card-action">
+                        <a href="{#{% url 'schedule:events' %}#}">Plus d'évennements</a>
+                    </div>
+                </div>
+                <div class="card blue-grey darken-1 hoverable">
+                    <div class="card-content white-text">
+                        <span class="card-title"><i class="small material-icons">local_dining</i> Aujourd'hui au self</span>
+                    </div>
+                    <div class="card-action">
+                        <a href="{#{% url 'self:weekmenu' %}#}">Afficher pour la semaine</a>
+                    </div>
+                </div>
+            </div>
+            <!-- LEFT COLUMN -->
+            <div class="col s12 m6">
+                <div class="card blue-grey darken-1 hoverable">
+                    <div class="card-content white-text">
+                        <span class="card-title"><i class="small material-icons">library_books</i> Actualités</span>
+                        {% if article %}
+                        {% else %}
+                            <p>Il n'y a aucun article a afficher !</p>
+                        {% endif %}
+                    </div>
+                    <div class="card-action">
+                        <a href="{#{% url 'articles:articles' %}#}">Plus d'articles</a>
+                    </div>
+                </div>
+                <div class="card blue-grey darken-1 hoverable">
+                    <div class="card-content white-text">
+                        <span class="card-title"><i class="small material-icons">schedule</i> Modification de planning</span>
+                        {% if planning_modification %}
+                            <ul>
+                                {% for modification in planning_modification %}
+                                    <li>{{modification.related_classe}} - {{modification.info}}</li>
+                                {% endfor %}
+                            </ul>
+                            {% else %}
+                                <p>il n'y a aucune modification de planning en ce moment !</p>
+                        {% endif %}
+                    </div>
+                    <div class="card-action">
+                        <a href="{#{% url 'planning:planning' %}#}">Plus d'info</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

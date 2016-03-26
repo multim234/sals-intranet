@@ -1,0 +1,27 @@
+{% extends "basic.html" %}
+
+{% block content %}
+    <div class="container">
+        <h4>Absences</h4>
+        {% if missing %}
+            <table class="bordered striped">
+                <thead>
+                    <th>Nom</th>
+                    <th>Début</th>
+                    <th>Fin</th>
+                </thead>
+                <tbody>
+                    {% for missing in missing %}
+                        <tr>
+                            <td>{{ missing.staff_name }}</td>
+                            <td>{{ missing.start|date:"d/M H:i" }}</td>
+                            <td>{{ missing.end|date:"d/M H:i" }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Personne n'est absent !</p>
+        {% endif %}
+    </div>
+{% endblock %}

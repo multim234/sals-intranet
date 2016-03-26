@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ page_title }}Intranet SALS</title>
+    <link rel="stylesheet" href="//localhost/inc/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+    <nav class="amber darken-3">
+        <div class="nav-wrapper container">
+            <a href="{% url 'base:home' %}" class="brand-logo">Intranet Saint Aubin La Salle</a>
+            <ul class="right">
+                <li><a target="_blank" href="//lycees-saintaubinlasalle.paysdelaloire.e-lyco.fr/">E-lyco</a></li>
+                <li><a target="_blank" href="//0492420p.esidoc.fr/">E-sidoc</a></li>
+                <li><a target="_blank" href="//www.scolinfo.net/">Scolinfo</a></li>
+                <li><a target="_blank" href="//www.universalis-edu.com/">Universalis</a></li>
+                <li><a target="_blank" href="//wiki.baronnerie.com">Wiki</a></li>
+            </ul>
+        </div>
+    </nav>
+    {% if message %}
+        <div class="alert alert-danger container"><b>Message du CPE :</b> {{ message.texte }}</div>
+    {% endif %}
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer class="page-footer light-blue darken-1">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Contacts</h5>
+                    <p class="grey-text text-lighten-4">
+                        CPE : disponible de 7h30 à 18h30
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                <a class="grey-text text-lighten-4" href="{% url 'base:about' %}">© 2016 Saint Aubin La Salle</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
