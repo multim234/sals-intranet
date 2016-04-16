@@ -1,0 +1,29 @@
+{% extends "basic.html" %}
+
+{% block content %}
+    <div class="container">
+        <h4>Modification de planning</h4>
+        {% if modification %}
+            <table class="bordered striped">
+                <thead>
+                    <th>Classe</th>
+                    <th>Professeur</th>
+                    <th>Date</th>
+                    <th>Information</th>
+                </thead>
+                <tbody>
+                    {% for modification in modification %}
+                        <tr>
+                            <td>{{ modification.related_classe }}</td>
+                            <td>{{ modification.related_staff }}</td>
+                            <td>{{ modification.date|date:"d/M H:i" }}</td>
+                            <td>{{ modification.info }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Aucune modification de planning !</p>
+        {% endif %}
+    </div>
+{% endblock %}
