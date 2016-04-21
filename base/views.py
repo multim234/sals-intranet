@@ -18,6 +18,6 @@ def about(request):
     """ About page who show authors,etc... """
     template = "about.html"
     context = {
-            'page_title': "Auteurs | ",
+            'page_title': "A propos | ",
             }
     return render(request, template, context)
