@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Modification(models.Model):
     related_classe = models.CharField(max_length=256)
     related_staff = models.CharField(max_length=256)

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Modification
 
+
 def modifications(request):
     template = "modifications.html"
     context = {
