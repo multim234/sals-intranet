@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Affichage TV</title>
+		<link rel="stylesheet" href="/static/style.css">
+		<link rel="stylesheet" href="/static/tv.css">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<meta http-equiv="Refresh" content="300;URL=/tv.html">
+	</head>
+	<body>
+		<div class="row">
+
+			<div class="col s4"><!-- COLONNE 1 -->
+				<div class="card blue-grey darken-1 z-depth-2">
+					<div class="card-content white-text">
+						<span class="card-title"><i class="small material-icons">perm_identity</i> Absences</span>
+            {% if missing %}
+                <ul>
+                    {% for missing in missing %}
+                        <li>{{ missing.staff_name|upper }} <a><b>{{ missing.start|date:"d/M H:i" }} jusqu'au {{ missing.end|date:"d/M H:i" }}</b></a></li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p> Personne est absents !</p>
+            {% endif %}
+					</div>
+				</div>
+
+        <div class="card blue-grey darken-1 z-depth-2">
+            <div class="card-content white-text">
+                <span class="card-title"><i class="small material-icons">schedule</i> Modification de planning</span>
+                {% if planning_modification %}
+                    <ul>
+                        {% for modification in planning_modification %}
+                            <li>{{modification.related_classe}} - {{modification.info}}</li>
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                        <p>il n'y a aucune modification de planning en ce moment !</p>
+                {% endif %}
+            </div>
+        </div>
+			</div><!-- FIN COLONNE 1 -->
+
+			<div class="col s4"><!-- COLONNE 2 -->
+        {% comment 'TODO' %}
+				<div class="card blue-grey darken-1 z-depth-2">
+					<div class="card-content white-text">
+						<span class="card-title"><i class="small material-icons">schedule</i> Agenda</span>
+						<ul>
+							<li>22 et 23 janvier <a><b>Portes ouvertes</b></a></li>
+						</ul>
+					</div>
+				</div>
+        {% endcomment %}
+			</div><!-- FIN COLONNE 2 -->
+
+			<div class="col s4"><!-- COLONNE 3 -->
+        {% comment 'TODO' %}
+        <div class="card blue-grey darken-1 z-depth-2">
+					<div class="card-content white-text">
+						<span class="card-title"><i class="small material-icons">local_dining</i> Aujourd'hui au self</span>
+						<ul>
+							<li>Ce midi :</li>
+							<li>&emsp; - pates</li>
+							<li>&emsp; - pates</li>
+							<li>&emsp; - pates</li>
+							<li>&emsp; - pates</li>
+							<br><li>Ce soir :</li>
+							<li>&emsp; - pates</li>
+							<li>&emsp; - pates</li>
+							<li>&emsp; - pates</li>
+							<li>&emsp; - pates</li>
+						</ul>
+					</div>
+				</div>
+        {% endcomment %}
+			</div><!-- FIN COLONNE 3-->
+		</div>
+
+		<div class="navbar-fixed" style="position:fixed;bottom:0">
+			<nav class="amber darken-3">
+				<a class="brand-logo">
+          {% if message %}
+            <span style="margin-left:10px">{{ message.texte }}</span>
+            {% else %}
+              <span style="margin-left:10px">Bienvenue a St Aubin La Salle</span>
+          {% endif %}
+				</a>
+				<div class="new-wrapper">
+					<a id="time" style="color:#009688" class="brand-logo right"></a>
+				</div>
+			</nav>
+		</div>
+
+		<script src="/static/heure.js"></script>
+		<script type="text/javascript">window.onload = date_heure('time');</script>
+	</body>
+</html>

@@ -22,3 +22,14 @@ def about(request):
             'page_title': "A propos | ",
             }
     return render(request, template, context)
+
+
+def tv_display(request):
+    """ home page for tv display """
+    template = "tv_display.html"
+    context = {
+            'message': Message.objects.last(),
+            'missing': Missing.objects.all()[:5],
+            'planning_modification': Modification.objects.all()[:5],
+            }
+    return render(request, template, context)
