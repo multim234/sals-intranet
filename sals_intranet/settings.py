@@ -16,6 +16,7 @@ INSTALLED_APPS = [
     'base',
     'missing',
     'planning_modifications',
+    'self_menu',
 ]
 
 MIDDLEWARE_CLASSES = [

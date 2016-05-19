@@ -1,7 +1,11 @@
 from django.shortcuts import render
+from datetime import datetime
+
+# models
 from base.models import Message
 from missing.models import Missing
 from planning_modifications.models import Modification
+from self_menu.models import Lunch_menu
 
 
 def home(request):
@@ -11,7 +15,9 @@ def home(request):
             'message': Message.objects.last(),
             'missing': Missing.objects.all()[:5],
             'planning_modification': Modification.objects.all()[:5],
+            'lunch_menu': Lunch_menu.objects.filter(lunch_date=datetime.today())
             }
+
     return render(request, template, context)
 
 

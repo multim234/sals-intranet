@@ -40,16 +40,25 @@
                         <a href="{#{% url 'schedule:events' %}#}">Plus d'évennements</a>
                     </div>
                 </div>
+                {% endcomment %}
 
                 <div class="card blue-grey darken-1 hoverable">
                     <div class="card-content white-text">
                         <span class="card-title"><i class="small material-icons">local_dining</i> Aujourd'hui au self</span>
+                        {% if lunch_menu %}
+                          <ul>
+                            <li>Entrée : {{ lunch_menu.0.get_next_dinner.0 }}</li>
+                            <li>Plat : {{ lunch_menu.0.get_next_dinner.1 }}</li>
+                            <li>Déssert : {{ lunch_menu.0.get_next_dinner.2 }}</li>
+                          </ul>
+                          {% else %}
+                          <p>Il n'y a pas de prochain repas programmé pour aujourd'hui :(</p>
+                        {% endif %}
                     </div>
-                    <div class="card-action">
-                        <a href="{#{% url 'self:weekmenu' %}#}">Afficher pour la semaine</a>
-                    </div>
+                    {% comment %}<div class="card-action">
+                        <a href="">Afficher pour la semaine</a>
+                    </div>{% endcomment %}
                 </div>
-                {% endcomment %}
             </div>
             <!-- LEFT COLUMN -->
             <div class="col s12 m6">
