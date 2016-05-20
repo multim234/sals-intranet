@@ -1,0 +1,50 @@
+{% extends "basic.html" %}
+
+{% block content %}
+  <div class="container">
+    <h4>Menu self</h4>
+
+    {% if lunch_menu %}
+      <table class="bordered striped">
+        <thead>
+          <th>Date</th>
+          <th>Midi</th>
+          <th>Soir</th>
+        </thead>
+
+        <tbody>
+          {% for lunch in lunch_menu  %}
+            <tr>
+              <td>{{ lunch.lunch_date }}</td>
+              {# Midday column #}
+              <td>
+                <ul>
+                  <li>entrée : {{ lunch.midday_entrance }}</li>
+                  <li>plat : {{ lunch.midday_dish }}</li>
+                  <li>dessert : {{ lunch.midday_dessert }}</li>
+                </ul>
+              </td>
+              {# Dinner column #}
+              <td>
+                {% if lunch.dinner_entrance and lunch.dinner_dish and lunch.dinner_dessert %}
+                  <ul>
+                    <li>entrée : {{ lunch.dinner_entrance }}</li>
+                    <li>plat : {{ lunch.dinner_dish }}</li>
+                    <li>dessert : {{ lunch.dinner_dessert }}</li>
+                  </ul>
+                  {% else %}
+                    Pas de repas !
+                {% endif %}
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+        <p>Aucun menu n'est programmé pour les 7 prochains jours !</p>
+    {% endif %}
+
+
+  </div>
+
+{% endblock content %}

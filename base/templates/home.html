@@ -55,9 +55,9 @@
                           <p>Il n'y a pas de prochain repas programmé pour aujourd'hui :(</p>
                         {% endif %}
                     </div>
-                    {% comment %}<div class="card-action">
-                        <a href="">Afficher pour la semaine</a>
-                    </div>{% endcomment %}
+                    <div class="card-action">
+                        <a href="{% url 'self_menu:self_menu' %}">Afficher pour la semaine</a>
+                    </div>
                 </div>
             </div>
             <!-- LEFT COLUMN -->

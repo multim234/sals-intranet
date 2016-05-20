@@ -6,4 +6,5 @@ urlpatterns = [
     url(r'^', include('base.urls')),
     url(r'^absences/', include('missing.urls')),
     url(r'^modifications/', include('planning_modifications.urls')),
+    url(r'^self_menu/', include('self_menu.urls')),
 ]
