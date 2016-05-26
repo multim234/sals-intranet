@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from base.views import *
+from .views import home, about, tv_display
 
 app_name = "base"
 urlpatterns = [

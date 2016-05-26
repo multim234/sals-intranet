@@ -1,5 +1,5 @@
 from django.contrib import admin
-from self_menu.models import Lunch_menu
+from .models import Lunch_menu
 
 
 class LunchAdmin(admin.ModelAdmin):

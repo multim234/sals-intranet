@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from planning_modifications.views import *
+from .views import modifications
 
 app_name = "planning_modifications"
 
